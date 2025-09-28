@@ -19,22 +19,155 @@
 - **Язык**: [TypeScript/JavaScript]
 
 
+Роли пользователей и варианты использования
+Роли в системе
+Гость - неавторизованный пользователь
 
-## Прототипы страниц
-[Вставьте ссылку на Figma, Adobe XD или другой инструмент с прототипами]
+Пользователь - авторизованный сотрудник
 
-Примеры страниц:
-- ✅ Страница авторизации
-- ✅ Главная страница
-- ✅ Справочник организаций
-- ✅ Справочник банков
-- ✅ Справочник счетов
-- ✅ Справочник услуг
-- ✅ Справочник договоров
-- ✅ Фильтрация договоров
+Администратор - пользователь с расширенными правами
+
+Диаграмма вариантов использования
+https://%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B0_%D0%BD%D0%B0_%D0%B4%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83_%D0%B2%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D0%BE%D0%B2_%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.png
+
+Описание действий по ролям
+Гость
+✅ Регистрация в системе
+
+✅ Авторизация в системе
+
+Пользователь
+✅ Просмотр справочника организаций
+
+✅ Просмотр справочника банков
+
+✅ Просмотр справочника счетов
+
+✅ Просмотр справочника услуг
+
+✅ Просмотр справочника договоров
+
+✅ Фильтрация договоров по дате
+
+✅ Фильтрация договоров по типу
+
+✅ Экспорт данных
+
+Администратор
+✅ Все действия пользователя
+
+✅ Добавление/редактирование организаций
+
+✅ Добавление/редактирование банков
+
+✅ Добавление/редактирование счетов
+
+✅ Добавление/редактирование услуг
+
+✅ Добавление/редактирование договоров
+
+✅ Управление пользователями
+
+Схема базы данных
+ER-диаграмма
+
+
+Описание таблиц
+
+organizations
+id - SERIAL PRIMARY KEY
+
+unp - VARCHAR(9) UNIQUE NOT NULL
+
+full_name - VARCHAR(255) NOT NULL
+
+short_name - VARCHAR(255) NOT NULL
+
+address - VARCHAR(255)
+
+legal_address - VARCHAR(255)
+
+postal_address - VARCHAR(255)
+
+phone - VARCHAR(255)
+
+created_at - TIMESTAMP
+
+updated_at - TIMESTAMP
+
+banks
+id - SERIAL PRIMARY KEY
+
+bic - VARCHAR(8) NOT NULL
+
+bank_name - VARCHAR(255) NOT NULL
+
+created_at - TIMESTAMP
+
+bank_accounts
+id - SERIAL PRIMARY KEY
+
+unp - VARCHAR(9) NOT NULL
+
+account_number - VARCHAR(28) NOT NULL
+
+bank_id - INTEGER REFERENCES banks(id)
+
+is_budget - BOOLEAN NOT NULL
+
+created_at - TIMESTAMP
+
+services
+id - SERIAL PRIMARY KEY
+
+name - VARCHAR(255) NOT NULL
+
+cost_without_vat - DECIMAL(10,2) NOT NULL
+
+unit - VARCHAR(50) NOT NULL
+
+created_at - TIMESTAMP
+
+contracts
+id - SERIAL PRIMARY KEY
+
+contract_number - VARCHAR(20) NOT NULL
+
+contract_type - VARCHAR(100) NOT NULL
+
+contract_date - DATE NOT NULL
+
+valid_from - DATE NOT NULL
+
+valid_to - DATE NOT NULL
+
+bank_account_id - INTEGER REFERENCES bank_accounts(id)
+
+service_id - INTEGER REFERENCES services(id)
+
+workplaces_count - INTEGER NOT NULL
+
+electronic_acts - BOOLEAN DEFAULT false
+
+termination_type - VARCHAR(100)
+
+created_at - TIMESTAMP
+
+users
+id - SERIAL PRIMARY KEY
+
+username - VARCHAR(100) UNIQUE NOT NULL
+
+email - VARCHAR(255) UNIQUE NOT NULL
+
+password_hash - VARCHAR(255) NOT NULL
+
+role - VARCHAR(50) DEFAULT 'user'
+
+created_at - TIMESTAMP
+
 
 ## API сервера
-
 
 ### Основные endpoints:
 - `POST /api/auth/login` - Авторизация
