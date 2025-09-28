@@ -25,12 +25,9 @@
 
 ## Примеры использования и роли
 
-<img width="505" height="694" alt="image" src="https://github.com/user-attachments/assets/1e1252b8-89d6-4add-8e11-7aa7c82e98ad" />
+<img width="777" height="1041" alt="Use-Case Diagram Erida drawio" src="https://github.com/user-attachments/assets/38e70a7b-4065-43e8-ac8e-a81a8e8a3660" />
 
 
-## API Documentation
-
-### Базовый URL
 
 ## API сервера
 
