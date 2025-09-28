@@ -72,100 +72,89 @@ https://%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B0_%D0%BD%D0%B0_%D0%B4%D0%B8%D0%B0%D0%
 ER-диаграмма
 
 
-Описание таблиц
+## Схема базы данных
 
-organizations
-id - SERIAL PRIMARY KEY
+### ER-диаграмма
+![ER Diagram](ссылка_на_ER_диаграмму.png)
 
-unp - VARCHAR(9) UNIQUE NOT NULL
+### Описание таблиц
 
-full_name - VARCHAR(255) NOT NULL
+#### Таблица: organizations
 
-short_name - VARCHAR(255) NOT NULL
+| ИМЯ | ТИП | ОПИСАНИЕ |
+|-----|-----|----------|
+| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
+| unp | VARCHAR(9) UNIQUE NOT NULL | УНП (9 цифр) |
+| full_name | VARCHAR(255) NOT NULL | Полное наименование организации |
+| short_name | VARCHAR(255) NOT NULL | Сокращенное наименование организации |
+| address | VARCHAR(255) | Адрес |
+| legal_address | VARCHAR(255) | Юридический адрес |
+| postal_address | VARCHAR(255) | Почтовый адрес |
+| phone | VARCHAR(255) | Телефон |
+| created_at | TIMESTAMP | Дата создания |
+| updated_at | TIMESTAMP | Дата обновления |
 
-address - VARCHAR(255)
+#### Таблица: banks
 
-legal_address - VARCHAR(255)
+| ИМЯ | ТИП | ОПИСАНИЕ |
+|-----|-----|----------|
+| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
+| bic | VARCHAR(8) NOT NULL | БИК (банковский идентификационный код) |
+| bank_name | VARCHAR(255) NOT NULL | Наименование банка |
+| created_at | TIMESTAMP | Дата создания |
 
-postal_address - VARCHAR(255)
+#### Таблица: bank_accounts
 
-phone - VARCHAR(255)
+| ИМЯ | ТИП | ОПИСАНИЕ |
+|-----|-----|----------|
+| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
+| unp | VARCHAR(9) NOT NULL | УНП организации |
+| account_number | VARCHAR(28) NOT NULL | Номер счета (2 буквы + 2 цифры + 4 буквы + 20 цифр) |
+| bank_id | INTEGER REFERENCES banks(id) | Ссылка на банк |
+| is_budget | BOOLEAN NOT NULL | Признак "Бюджет/внебюджет" (true/false) |
+| created_at | TIMESTAMP | Дата создания |
 
-created_at - TIMESTAMP
+#### Таблица: services
 
-updated_at - TIMESTAMP
+| ИМЯ | ТИП | ОПИСАНИЕ |
+|-----|-----|----------|
+| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
+| name | VARCHAR(255) NOT NULL | Название услуги |
+| cost_without_vat | DECIMAL(10,2) NOT NULL | Стоимость без НДС |
+| unit | VARCHAR(50) NOT NULL | Единица измерения |
+| created_at | TIMESTAMP | Дата создания |
 
-banks
-id - SERIAL PRIMARY KEY
+#### Таблица: contracts
 
-bic - VARCHAR(8) NOT NULL
+| ИМЯ | ТИП | ОПИСАНИЕ |
+|-----|-----|----------|
+| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
+| contract_number | VARCHAR(20) NOT NULL | Номер договора |
+| contract_type | VARCHAR(100) NOT NULL | Тип договора |
+| contract_date | DATE NOT NULL | Дата договора |
+| valid_from | DATE NOT NULL | Действует с |
+| valid_to | DATE NOT NULL | Действует по |
+| bank_account_id | INTEGER REFERENCES bank_accounts(id) | Ссылка на счет |
+| service_id | INTEGER REFERENCES services(id) | Ссылка на услугу |
+| workplaces_count | INTEGER NOT NULL | Количество рабочих мест |
+| electronic_acts | BOOLEAN DEFAULT false | Признак "ЭлектроАкты" |
+| termination_type | VARCHAR(100) | Тип окончания договора |
+| created_at | TIMESTAMP | Дата создания |
 
-bank_name - VARCHAR(255) NOT NULL
+#### Таблица: users
 
-created_at - TIMESTAMP
+| ИМЯ | ТИП | ОПИСАНИЕ |
+|-----|-----|----------|
+| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
+| username | VARCHAR(100) UNIQUE NOT NULL | Имя пользователя |
+| email | VARCHAR(255) UNIQUE NOT NULL | Email |
+| password_hash | VARCHAR(255) NOT NULL | Хеш пароля |
+| role | VARCHAR(50) DEFAULT 'user' | Роль пользователя |
+| created_at | TIMESTAMP | Дата создания |
 
-bank_accounts
-id - SERIAL PRIMARY KEY
+## API Documentation
 
-unp - VARCHAR(9) NOT NULL
-
-account_number - VARCHAR(28) NOT NULL
-
-bank_id - INTEGER REFERENCES banks(id)
-
-is_budget - BOOLEAN NOT NULL
-
-created_at - TIMESTAMP
-
-services
-id - SERIAL PRIMARY KEY
-
-name - VARCHAR(255) NOT NULL
-
-cost_without_vat - DECIMAL(10,2) NOT NULL
-
-unit - VARCHAR(50) NOT NULL
-
-created_at - TIMESTAMP
-
-contracts
-id - SERIAL PRIMARY KEY
-
-contract_number - VARCHAR(20) NOT NULL
-
-contract_type - VARCHAR(100) NOT NULL
-
-contract_date - DATE NOT NULL
-
-valid_from - DATE NOT NULL
-
-valid_to - DATE NOT NULL
-
-bank_account_id - INTEGER REFERENCES bank_accounts(id)
-
-service_id - INTEGER REFERENCES services(id)
-
-workplaces_count - INTEGER NOT NULL
-
-electronic_acts - BOOLEAN DEFAULT false
-
-termination_type - VARCHAR(100)
-
-created_at - TIMESTAMP
-
-users
-id - SERIAL PRIMARY KEY
-
-username - VARCHAR(100) UNIQUE NOT NULL
-
-email - VARCHAR(255) UNIQUE NOT NULL
-
-password_hash - VARCHAR(255) NOT NULL
-
-role - VARCHAR(50) DEFAULT 'user'
-
-created_at - TIMESTAMP
-
+### Базовый URL
 
 ## API сервера
 
