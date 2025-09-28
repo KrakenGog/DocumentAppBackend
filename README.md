@@ -1,4 +1,4 @@
-# Erida
+[Use-Case Diagram Erida.drawio](https://github.com/user-attachments/files/22585181/Use-Case.Diagram.Erida.drawio)# Erida
 
 ## Описание проекта
 Проект представляет собой корпоративную платформу для управления договорной деятельностью и внутренним документооборотом. Он предназначен для автоматизации процессов работы с договорами, централизованного хранения документов и снижения рисков.
@@ -11,146 +11,278 @@
 ## Стек используемых технологий
 
 ### Backend
-- **Фреймворк**: [Spring Boot]
-- **Язык**: [Java]
+- **Фреймворк**: Spring Boot
+- **Язык**: Java
 
 ### Frontend
-- **Фреймворк**: [React/Vue/Angular/другой]
-- **Язык**: [TypeScript/JavaScript]
-
-
-Роли пользователей и варианты использования
-Роли в системе
-Гость - неавторизованный пользователь
-
-Пользователь - авторизованный сотрудник
-
-Администратор - пользователь с расширенными правами
-
-Диаграмма вариантов использования
-https://%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B0_%D0%BD%D0%B0_%D0%B4%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%83_%D0%B2%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D0%BE%D0%B2_%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.png
-
-Описание действий по ролям
-Гость
-✅ Регистрация в системе
-
-✅ Авторизация в системе
-
-Пользователь
-✅ Просмотр справочника организаций
-
-✅ Просмотр справочника банков
-
-✅ Просмотр справочника счетов
-
-✅ Просмотр справочника услуг
-
-✅ Просмотр справочника договоров
-
-✅ Фильтрация договоров по дате
-
-✅ Фильтрация договоров по типу
-
-✅ Экспорт данных
-
-Администратор
-✅ Все действия пользователя
-
-✅ Добавление/редактирование организаций
-
-✅ Добавление/редактирование банков
-
-✅ Добавление/редактирование счетов
-
-✅ Добавление/редактирование услуг
-
-✅ Добавление/редактирование договоров
-
-✅ Управление пользователями
+- **Фреймворк**: React
+- **Язык**: JavaScript
 
 Схема базы данных
-ER-диаграмма
+![photo_5391297358488269894_y](https://github.com/user-attachments/assets/4c4f2f5c-9679-43aa-bdd2-b06e2cd71602)
 
 
-## Схема базы данных
 
-### ER-диаграмма
-![ER Diagram](ссылка_на_ER_диаграмму.png)
+## Примеры использования и роли
 
-### Описание таблиц
+[Upload<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0" version="28.2.5">
+  <diagram name="Страница — 1" id="viUAxTYOAMvD502hQ9XU">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-14" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="625" y="20" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-16" value="&lt;div&gt;Guest&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="40" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-17" value="&lt;div&gt;Войти в&amp;nbsp;&lt;/div&gt;&lt;div&gt;систему&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="290" y="150" width="92.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-18" value="Зарегистрироваться" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="100" y="150" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-20" value="&lt;div&gt;Общаться в&amp;nbsp;&lt;/div&gt;&lt;div&gt;мессенджере&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="695" y="100" width="105" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-22" value="Выйти из аккаунта" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="490" y="90" width="80" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-24" value="&lt;div&gt;Использовать&lt;/div&gt;&lt;div&gt;выданные&amp;nbsp;&lt;/div&gt;&lt;div&gt;права&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="605" y="170" width="125" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-26" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="330" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-28" value="&lt;div&gt;Управлять&amp;nbsp;&lt;/div&gt;&lt;div&gt;шаблонами&amp;nbsp;&lt;/div&gt;&lt;div&gt;договоров&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="335" y="330" width="125" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-30" value="&lt;div&gt;Управлять&amp;nbsp;&lt;/div&gt;&lt;div&gt;правами доступа&amp;nbsp;&lt;/div&gt;&lt;div&gt;пользователей&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="60" y="320" width="135" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-32" value="&lt;div&gt;Управлять&lt;/div&gt;&lt;div&gt;договорами&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="335" y="250" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-35" value="&lt;div&gt;Просматривать и редактировать&lt;/div&gt;&lt;div&gt;данные в бд&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="160" y="230" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-38" value="&lt;div&gt;Генерировать&lt;/div&gt;&lt;div&gt;акты на основе&amp;nbsp;&lt;/div&gt;&lt;div&gt;договоров&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="220" y="440" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-42" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-26" target="b1jvxYijN9P2EA6jAzJ2-28">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="410" as="sourcePoint" />
+            <mxPoint x="400" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-43" value="" style="endArrow=none;html=1;rounded=0;entryX=0.295;entryY=0.975;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="b1jvxYijN9P2EA6jAzJ2-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="350" as="sourcePoint" />
+            <mxPoint x="400" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-44" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="b1jvxYijN9P2EA6jAzJ2-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="195" y="360" as="sourcePoint" />
+            <mxPoint x="245" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-45" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.678;entryY=0.922;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-26" target="b1jvxYijN9P2EA6jAzJ2-35">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="370" as="sourcePoint" />
+            <mxPoint x="400" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-47" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0.888;exitY=0.362;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-26" target="b1jvxYijN9P2EA6jAzJ2-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="350" as="sourcePoint" />
+            <mxPoint x="400" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-48" value="" style="endArrow=none;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-22" target="b1jvxYijN9P2EA6jAzJ2-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="170" as="sourcePoint" />
+            <mxPoint x="650" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-49" value="" style="endArrow=none;html=1;rounded=0;exitX=0.36;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-24" target="b1jvxYijN9P2EA6jAzJ2-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="170" as="sourcePoint" />
+            <mxPoint x="650" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-50" value="" style="endArrow=none;html=1;rounded=0;entryX=0.424;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-14" target="b1jvxYijN9P2EA6jAzJ2-20">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="600" y="170" as="sourcePoint" />
+            <mxPoint x="732" y="99" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-51" value="" style="endArrow=none;html=1;rounded=0;exitX=0.419;exitY=0.014;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-18" target="b1jvxYijN9P2EA6jAzJ2-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="170" as="sourcePoint" />
+            <mxPoint x="290" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-52" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="170" as="sourcePoint" />
+            <mxPoint x="336" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-53" value="&lt;div&gt;Общаться в&amp;nbsp;&lt;/div&gt;&lt;div&gt;мессенджере&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="330" width="115" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-54" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.428;exitY=0.989;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-53">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="510" y="390" as="sourcePoint" />
+            <mxPoint x="580" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="580" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-55" value="Отправлять сообщения" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="410" width="125" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-59" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.619;exitY=1.05;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-53" target="b1jvxYijN9P2EA6jAzJ2-60">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="510" y="360" as="sourcePoint" />
+            <mxPoint x="670" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-60" value="Отправлять договоры и акты" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="695" y="400" width="115" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-61" value="Использовать выданные права" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="750" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-62" value="&lt;div&gt;Управлять&lt;/div&gt;&lt;div&gt;договорами&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="530" y="760" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-63" value="&lt;div&gt;Управлять&amp;nbsp;&lt;/div&gt;&lt;div&gt;шаблонами&amp;nbsp;&lt;/div&gt;&lt;div&gt;договоров&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="325" y="650" width="125" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-64" value="&lt;div&gt;Генерировать&lt;/div&gt;&lt;div&gt;акты на основе&amp;nbsp;&lt;/div&gt;&lt;div&gt;договоров&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="132.5" y="710" width="127.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-66" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-61" target="b1jvxYijN9P2EA6jAzJ2-63">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="650" as="sourcePoint" />
+            <mxPoint x="510" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-67" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0;exitY=0.333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-61" target="b1jvxYijN9P2EA6jAzJ2-64">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="650" as="sourcePoint" />
+            <mxPoint x="510" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-68" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-61" target="b1jvxYijN9P2EA6jAzJ2-62">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="650" as="sourcePoint" />
+            <mxPoint x="510" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-69" value="&lt;div&gt;Просматривать и редактировать&lt;/div&gt;&lt;div&gt;данные в бд&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="170" y="810" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-70" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.772;entryY=0.102;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-61" target="b1jvxYijN9P2EA6jAzJ2-69">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="840" as="sourcePoint" />
+            <mxPoint x="510" y="840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-71" value="&lt;div&gt;Управлять&amp;nbsp;&lt;/div&gt;&lt;div&gt;правами доступа&amp;nbsp;&lt;/div&gt;&lt;div&gt;пользователей&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="470" y="980" width="145" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-72" value="Добавить шаблон договора" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="215" y="594.5" width="115" height="55.5" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-73" value="Редактировать шаблон договора" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="589.25" width="140" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-74" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.289;exitY=0.027;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-63" target="b1jvxYijN9P2EA6jAzJ2-72">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="680" as="sourcePoint" />
+            <mxPoint x="510" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-75" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.684;exitY=-0.021;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-63" target="b1jvxYijN9P2EA6jAzJ2-73">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="680" as="sourcePoint" />
+            <mxPoint x="510" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-76" value="Создавать и регистрировать договоры" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="665" y="680" width="135" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-77" value="Просматривать существующие договоры&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="790" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-78" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.043;entryY=0.599;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-62" target="b1jvxYijN9P2EA6jAzJ2-76">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="750" as="sourcePoint" />
+            <mxPoint x="510" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-80" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.911;exitY=0.797;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-62" target="b1jvxYijN9P2EA6jAzJ2-77">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="750" as="sourcePoint" />
+            <mxPoint x="510" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-81" value="Выдавать права пользователям" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="900" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-82" value="Лишать пользователей прав" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="582.5" y="900" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-83" value="Создавать наборы прав (роли)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="482.5" y="1090" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-84" value="Назначать пользователям роли" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="1040" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-85" value="Лишать пользователей ролей" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="625" y="1040" width="115" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-86" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.345;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.806;entryY=0.923;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-71" target="b1jvxYijN9P2EA6jAzJ2-81">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="1010" as="sourcePoint" />
+            <mxPoint x="510" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-87" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;" edge="1" parent="1" target="b1jvxYijN9P2EA6jAzJ2-82">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="570" y="980" as="sourcePoint" />
+            <mxPoint x="510" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-88" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.909;entryY=0.143;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.057;exitY=0.71;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-71" target="b1jvxYijN9P2EA6jAzJ2-84">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="1010" as="sourcePoint" />
+            <mxPoint x="510" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-89" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-71" target="b1jvxYijN9P2EA6jAzJ2-83">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="1010" as="sourcePoint" />
+            <mxPoint x="510" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="b1jvxYijN9P2EA6jAzJ2-90" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.773;exitY=0.923;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="b1jvxYijN9P2EA6jAzJ2-71" target="b1jvxYijN9P2EA6jAzJ2-85">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="350" y="1010" as="sourcePoint" />
+            <mxPoint x="510" y="1010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+ing Use-Case Diagram Erida.drawio…]()
 
-#### Таблица: organizations
-
-| ИМЯ | ТИП | ОПИСАНИЕ |
-|-----|-----|----------|
-| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
-| unp | VARCHAR(9) UNIQUE NOT NULL | УНП (9 цифр) |
-| full_name | VARCHAR(255) NOT NULL | Полное наименование организации |
-| short_name | VARCHAR(255) NOT NULL | Сокращенное наименование организации |
-| address | VARCHAR(255) | Адрес |
-| legal_address | VARCHAR(255) | Юридический адрес |
-| postal_address | VARCHAR(255) | Почтовый адрес |
-| phone | VARCHAR(255) | Телефон |
-| created_at | TIMESTAMP | Дата создания |
-| updated_at | TIMESTAMP | Дата обновления |
-
-#### Таблица: banks
-
-| ИМЯ | ТИП | ОПИСАНИЕ |
-|-----|-----|----------|
-| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
-| bic | VARCHAR(8) NOT NULL | БИК (банковский идентификационный код) |
-| bank_name | VARCHAR(255) NOT NULL | Наименование банка |
-| created_at | TIMESTAMP | Дата создания |
-
-#### Таблица: bank_accounts
-
-| ИМЯ | ТИП | ОПИСАНИЕ |
-|-----|-----|----------|
-| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
-| unp | VARCHAR(9) NOT NULL | УНП организации |
-| account_number | VARCHAR(28) NOT NULL | Номер счета (2 буквы + 2 цифры + 4 буквы + 20 цифр) |
-| bank_id | INTEGER REFERENCES banks(id) | Ссылка на банк |
-| is_budget | BOOLEAN NOT NULL | Признак "Бюджет/внебюджет" (true/false) |
-| created_at | TIMESTAMP | Дата создания |
-
-#### Таблица: services
-
-| ИМЯ | ТИП | ОПИСАНИЕ |
-|-----|-----|----------|
-| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
-| name | VARCHAR(255) NOT NULL | Название услуги |
-| cost_without_vat | DECIMAL(10,2) NOT NULL | Стоимость без НДС |
-| unit | VARCHAR(50) NOT NULL | Единица измерения |
-| created_at | TIMESTAMP | Дата создания |
-
-#### Таблица: contracts
-
-| ИМЯ | ТИП | ОПИСАНИЕ |
-|-----|-----|----------|
-| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
-| contract_number | VARCHAR(20) NOT NULL | Номер договора |
-| contract_type | VARCHAR(100) NOT NULL | Тип договора |
-| contract_date | DATE NOT NULL | Дата договора |
-| valid_from | DATE NOT NULL | Действует с |
-| valid_to | DATE NOT NULL | Действует по |
-| bank_account_id | INTEGER REFERENCES bank_accounts(id) | Ссылка на счет |
-| service_id | INTEGER REFERENCES services(id) | Ссылка на услугу |
-| workplaces_count | INTEGER NOT NULL | Количество рабочих мест |
-| electronic_acts | BOOLEAN DEFAULT false | Признак "ЭлектроАкты" |
-| termination_type | VARCHAR(100) | Тип окончания договора |
-| created_at | TIMESTAMP | Дата создания |
-
-#### Таблица: users
-
-| ИМЯ | ТИП | ОПИСАНИЕ |
-|-----|-----|----------|
-| id | SERIAL PRIMARY KEY | Уникальный идентификатор |
-| username | VARCHAR(100) UNIQUE NOT NULL | Имя пользователя |
-| email | VARCHAR(255) UNIQUE NOT NULL | Email |
-| password_hash | VARCHAR(255) NOT NULL | Хеш пароля |
-| role | VARCHAR(50) DEFAULT 'user' | Роль пользователя |
-| created_at | TIMESTAMP | Дата создания |
 
 ## API Documentation
 
