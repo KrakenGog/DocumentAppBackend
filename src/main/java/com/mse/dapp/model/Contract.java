@@ -53,7 +53,7 @@ public class Contract {
     @NotNull(message = "Service is mandatory")
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
-    private Service service;
+    private ServiceEntity service;
     
     @NotNull(message = "Bank account is mandatory")
     @ManyToOne

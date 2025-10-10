@@ -2,6 +2,8 @@ package com.mse.dapp.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ContractRepo extends JpaRepository<ContractRepo, Long>  {
+import com.mse.dapp.model.Contract;
+
+public interface ContractRepo extends JpaRepository<Contract, Long>  {
     
 }
