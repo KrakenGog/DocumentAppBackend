@@ -1,4 +1,4 @@
-package com.mse.dapp.repositories;
+package com.mse.dapp.repository;
 
 
 
