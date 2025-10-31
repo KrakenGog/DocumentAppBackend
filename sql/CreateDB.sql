@@ -87,7 +87,7 @@ CREATE INDEX idx_contracts_bank_account_id ON contracts(bank_account_id);
 CREATE INDEX idx_contracts_active ON contracts(begin_date, end_date) WHERE end_date >= CURRENT_DATE;
 
 
--- ИНДЕКСЫ БАНКОВ
+-- ИНДЕКСЫ СЧЕТОВ В БАНКАХ
 -- Для поиска по организации
 CREATE INDEX idx_bank_accounts_organisation ON bank_accounts(organisation_UNP);
 
@@ -97,12 +97,14 @@ CREATE INDEX idx_bank_accounts_bank ON bank_accounts(bank_id);
 -- Для фильтрации бюджетных счетов
 CREATE INDEX idx_bank_accounts_budget ON bank_accounts(is_budget);
 
--- ИНДЕКСЫ ДЛЯ СЧЕТОВ В БАНКАХ
+
+-- ИНДЕКСЫ ДЛЯ ОРГАНИЗАЦИЙ
 -- Для поиска по имени организации
 CREATE INDEX idx_organisations_name ON organisations(name);
 
 -- Для поиска по короткому имени
 CREATE INDEX idx_organisations_short_name ON organisations(short_name);
+
 
 -- ИНДЕКСЫ ДЛЯ БАНКОВ
 -- Для поиска по БИК
@@ -111,12 +113,14 @@ CREATE INDEX idx_banks_bic ON banks(BIC);
 -- Для поиска по названию банка
 CREATE INDEX idx_banks_name ON banks(name);
 
+
 -- ИНДЕКСЫ ДЛЯ УСЛУГ
 -- Для поиска по названию услуги
 CREATE INDEX idx_services_name ON services(name);
 
 -- Для поиска по стоимости
 CREATE INDEX idx_services_cost ON services(cost);
+
 
 -- ИНДЕКСЫ ДЛЯ РОЛЕЙ ПОЛЬЗОВАТЕЛЕЙ
 -- Для поиска ролей пользователя
