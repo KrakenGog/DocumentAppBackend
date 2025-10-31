@@ -42,6 +42,12 @@
 
 # API Documentation
 
+После запуска приложения доступна Swagger-документация:
+
+- Swagger UI: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)  
+- OpenAPI JSON: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)  
+- OpenAPI YAML: [http://localhost:8080/v3/api-docs.yaml](http://localhost:8080/v3/api-docs.yaml)
+
 ## Аутентификация
 
 ### Регистрация
