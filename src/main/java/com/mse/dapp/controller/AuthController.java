@@ -14,8 +14,18 @@ import com.mse.dapp.dto.AuthResponse;
 import com.mse.dapp.service.UserService;
 import com.mse.dapp.util.JwtUtil;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Authentication", description = "API для аутентификации и получения JWT токенов")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -30,12 +40,41 @@ public class AuthController {
         this.jwtUtil = jwtUtil;
     }
 
+    @Operation(
+        summary = "Аутентификация пользователя",
+        description = "Выполняет аутентификацию пользователя и возвращает JWT токен"
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+            responseCode = "200",
+            description = "Успешная аутентификация",
+            content = @Content(
+                mediaType = "application/json",
+                schema = @Schema(implementation = AuthResponse.class)
+            )
+        ),
+        @ApiResponse(
+            responseCode = "401",
+            description = "Неверные учетные данные"
+        ),
+        @ApiResponse(
+            responseCode = "500",
+            description = "Внутренняя ошибка сервера"
+        )
+    })
+
+    @PostMapping("/test")
+    public void test(@RequestBody AuthRequest authRequest){
+        
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> createAuthToken(@RequestBody AuthRequest authRequest) {
+        log.debug("Trying to auth");
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
-
+        
         final UserDetails userDetails = userService.loadUserByUsername(authRequest.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
 
