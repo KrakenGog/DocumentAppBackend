@@ -22,7 +22,6 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     private final JwtUtil jwtUtil;
-    // UserDetailsService должен быть реализован (обычно это UserService)
     private final UserDetailsService userDetailsService;
 
     public WebSocketConfig(JwtUtil jwtUtil, UserDetailsService userDetailsService) {
@@ -32,23 +31,21 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        // Префикс для исходящих сообщений от сервера к клиенту
-        config.enableSimpleBroker("/topic");
-        // Префикс для входящих сообщений (если будем использовать @MessageMapping)
+        // /topic - общий, /queue - личные
+        config.enableSimpleBroker("/topic", "/queue");
         config.setApplicationDestinationPrefixes("/app");
+        config.setUserDestinationPrefix("/user"); // Важно для личных сообщений
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        // Точка подключения: http://localhost:8080/ws
         registry.addEndpoint("/ws")
-                .setAllowedOriginPatterns("*") // Разрешаем запросы с фронтенда (CORS)
-                .withSockJS(); // Включаем поддержку SockJS
+                .setAllowedOriginPatterns("*")
+                .withSockJS();
     }
 
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
-        // Interceptor для проверки JWT токена при WebSocket подключении
         registration.interceptors(new ChannelInterceptor() {
             @Override
             public Message<?> preSend(Message<?> message, MessageChannel channel) {
@@ -71,7 +68,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
                                 }
                             }
                         } catch (Exception e) {
-                            // Логируем ошибку или игнорируем, соединение не установится без auth
                             System.out.println("WebSocket Auth Error: " + e.getMessage());
                         }
                     }

@@ -9,4 +9,5 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ChatPostRequest {
     private String text;
+    private String recipient; // null для общего чата
 }

@@ -9,10 +9,9 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MessageDto {
-    private Long id;
-    private String author;
-    private String recipient;
-    private String text;
-    private Instant createdAt;
+public class ContactDto {
+    private String username;
+    private String lastMessage;
+    private Instant lastMessageTime;
+    private boolean online;
 }

@@ -1,13 +1,11 @@
 package com.mse.dapp.controller;
 
-import com.mse.dapp.dto.ChatPostRequest;
-import com.mse.dapp.dto.ChatPostResponse;
-import com.mse.dapp.dto.MessageDto;
-import com.mse.dapp.dto.WsPayloads;
+import com.mse.dapp.dto.*;
 import com.mse.dapp.model.Message;
 import com.mse.dapp.model.User;
 import com.mse.dapp.repository.MessageRepo;
 import com.mse.dapp.repository.UserRepo;
+import com.mse.dapp.service.UserStatusService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.Authentication;
@@ -25,64 +23,92 @@ public class ChatController {
     private final MessageRepo messageRepo;
     private final UserRepo userRepo;
     private final SimpMessagingTemplate messagingTemplate;
+    private final UserStatusService userStatusService;
 
-    public ChatController(MessageRepo messageRepo, UserRepo userRepo, SimpMessagingTemplate messagingTemplate) {
+    public ChatController(MessageRepo messageRepo, UserRepo userRepo, 
+                          SimpMessagingTemplate messagingTemplate, UserStatusService userStatusService) {
         this.messageRepo = messageRepo;
         this.userRepo = userRepo;
         this.messagingTemplate = messagingTemplate;
+        this.userStatusService = userStatusService;
     }
 
-    /**
-     * Получение истории сообщений.
-     * GET /chat?from_id=1
-     */
-    @GetMapping
-    public ResponseEntity<List<MessageDto>> getMessages(@RequestParam(name = "from_id", defaultValue = "0") Long fromId) {
-        List<Message> messages = messageRepo.findByIdGreaterThan(fromId);
+    @GetMapping("/messages")
+    public ResponseEntity<List<MessageDto>> getMessages(@RequestParam(required = false) String recipient) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = auth.getName();
+        List<Message> messages;
+
+        if (recipient == null || recipient.isEmpty() || "General".equals(recipient)) {
+            messages = messageRepo.findByRecipientIsNullOrderByCreatedAtAsc();
+        } else {
+            messages = messageRepo.findConversation(currentUser, recipient);
+        }
 
         List<MessageDto> dtos = messages.stream()
-                .map(m -> new MessageDto(m.getId(), m.getAuthor(), m.getText()))
+                .map(m -> new MessageDto(m.getId(), m.getAuthor(), m.getRecipient(), m.getText(), m.getCreatedAt()))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(dtos);
     }
 
-    /**
-     * Отправка сообщения (REST + WebSocket Broadcast).
-     * POST /chat
-     * Body: { "text": "Hello" }
-     * Header: Authorization: Bearer ...
-     */
+    @GetMapping("/contacts")
+    public ResponseEntity<List<ContactDto>> getContacts(@RequestParam(required = false) String search) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = auth.getName();
+
+        // Упрощенная логика: возвращаем всех пользователей кроме себя.
+        // В продакшене лучше делать DISTINCT выборку из таблицы сообщений + поиск
+        List<User> allUsers = userRepo.findAll(); 
+        
+        if (search != null && !search.isBlank()) {
+             allUsers = allUsers.stream()
+                .filter(u -> u.getLogin().toLowerCase().contains(search.toLowerCase()))
+                .collect(Collectors.toList());
+        }
+
+        List<ContactDto> contacts = allUsers.stream()
+                .filter(u -> !u.getLogin().equals(currentUser))
+                .map(u -> {
+                    boolean isOnline = userStatusService.isUserOnline(u.getLogin());
+                    return new ContactDto(u.getLogin(), "", null, isOnline);
+                })
+                .collect(Collectors.toList());
+        
+        return ResponseEntity.ok(contacts);
+    }
+
     @PostMapping
     public ResponseEntity<ChatPostResponse> sendMessage(@RequestBody ChatPostRequest request) {
         String text = request.getText();
-        if (text == null || text.trim().isEmpty()) {
-            return ResponseEntity.badRequest().build();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String sender = auth.getName();
+
+        // Проверка наличия юзера
+        userRepo.findByLogin(sender)
+                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        Message message = new Message();
+        message.setAuthor(sender);
+        message.setText(text);
+        
+        if (request.getRecipient() != null && !request.getRecipient().isEmpty() && !"General".equals(request.getRecipient())) {
+            message.setRecipient(request.getRecipient());
         }
 
-        // Получаем текущего пользователя из контекста безопасности (установленного через JWT)
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String login = authentication.getName();
-        
-        // Проверяем пользователя в БД (опционально, но надежно)
-        User user = userRepo.findByLogin(login)
-                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + login));
-
-        // Сохраняем сообщение
-        Message message = new Message();
-        message.setAuthor(user.getLogin()); 
-        message.setText(text);
         message = messageRepo.save(message);
+        
+        MessageDto wsMsg = new MessageDto(message.getId(), message.getAuthor(), message.getRecipient(), message.getText(), message.getCreatedAt());
 
-        // Рассылаем через WebSocket всем в топик /topic/chat
-        WsPayloads.ServerMessage wsMsg = new WsPayloads.ServerMessage(
-                message.getId(),
-                message.getAuthor(),
-                message.getText()
-        );
-        messagingTemplate.convertAndSend("/topic/chat", wsMsg);
+        if (message.getRecipient() == null) {
+            // Broadcast
+            messagingTemplate.convertAndSend("/topic/chat", wsMsg);
+        } else {
+            // Private
+            messagingTemplate.convertAndSendToUser(message.getRecipient(), "/queue/messages", wsMsg);
+            messagingTemplate.convertAndSendToUser(sender, "/queue/messages", wsMsg);
+        }
 
-        // Возвращаем ID сообщения
         return ResponseEntity.ok(new ChatPostResponse(message.getId()));
     }
 }
