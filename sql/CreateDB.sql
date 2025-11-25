@@ -50,9 +50,6 @@ CREATE TABLE contracts (
     CHECK (begin_date <= end_date)
 );
 
--- Создание индекса (аналог NONCLUSTERED INDEX)
-CREATE INDEX ON contracts (number);
-
 -- Таблица users
 CREATE TABLE users (
     id integer PRIMARY KEY,
@@ -72,3 +69,62 @@ CREATE TABLE user_roles (
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
     CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES roles (id) ON DELETE CASCADE
 );
+
+-- ИНДЕКСЫ КОНТРАКТОВ
+-- Для поиска по датам (часто используется в отчетах и фильтрации)
+CREATE INDEX idx_contracts_dates ON contracts(begin_date, end_date);
+
+-- Для фильтрации по типу договора
+CREATE INDEX idx_contracts_type ON contracts(type);
+
+-- Для поиска по service_id (внешний ключ)
+CREATE INDEX idx_contracts_service_id ON contracts(service_id);
+
+-- Для поиска по bank_account_id (внешний ключ)
+CREATE INDEX idx_contracts_bank_account_id ON contracts(bank_account_id);
+
+-- Для проверки активности договоров
+CREATE INDEX idx_contracts_active ON contracts(begin_date, end_date) WHERE end_date >= CURRENT_DATE;
+
+
+-- ИНДЕКСЫ СЧЕТОВ В БАНКАХ
+-- Для поиска по организации
+CREATE INDEX idx_bank_accounts_organisation ON bank_accounts(organisation_UNP);
+
+-- Для поиска по банку
+CREATE INDEX idx_bank_accounts_bank ON bank_accounts(bank_id);
+
+-- Для фильтрации бюджетных счетов
+CREATE INDEX idx_bank_accounts_budget ON bank_accounts(is_budget);
+
+
+-- ИНДЕКСЫ ДЛЯ ОРГАНИЗАЦИЙ
+-- Для поиска по имени организации
+CREATE INDEX idx_organisations_name ON organisations(name);
+
+-- Для поиска по короткому имени
+CREATE INDEX idx_organisations_short_name ON organisations(short_name);
+
+
+-- ИНДЕКСЫ ДЛЯ БАНКОВ
+-- Для поиска по БИК
+CREATE INDEX idx_banks_bic ON banks(BIC);
+
+-- Для поиска по названию банка
+CREATE INDEX idx_banks_name ON banks(name);
+
+
+-- ИНДЕКСЫ ДЛЯ УСЛУГ
+-- Для поиска по названию услуги
+CREATE INDEX idx_services_name ON services(name);
+
+-- Для поиска по стоимости
+CREATE INDEX idx_services_cost ON services(cost);
+
+
+-- ИНДЕКСЫ ДЛЯ РОЛЕЙ ПОЛЬЗОВАТЕЛЕЙ
+-- Для поиска ролей пользователя
+CREATE INDEX idx_user_roles_user_id ON user_roles(user_id);
+
+-- Для поиска пользователей с определенной ролью
+CREATE INDEX idx_user_roles_role_id ON user_roles(role_id);
