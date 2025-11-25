@@ -57,8 +57,6 @@ public class ChatController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUser = auth.getName();
 
-        // Упрощенная логика: возвращаем всех пользователей кроме себя.
-        // В продакшене лучше делать DISTINCT выборку из таблицы сообщений + поиск
         List<User> allUsers = userRepo.findAll(); 
         
         if (search != null && !search.isBlank()) {
